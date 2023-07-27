@@ -7,12 +7,14 @@ const passport = require('passport');
 const passportConfig = require('./services/auth');
 const MongoStore = require('connect-mongo')(session);
 const schema = require('./schema/schema');
+const authorize = require('./user.json');
+
 
 // Create a new Express application
 const app = express();
 
 // Replace with your Mongo Atlas URI
-const MONGO_URI = 'mongodb+srv://shoukkiya59:YRQpDGX8VyTcgw6D@cluster0.9ohdwue.mongodb.net/?retryWrites=true&w=majority';
+const MONGO_URI = 'mongodb+srv://'+authorize.username+':'+authorize.password+'@cluster0.9ohdwue.mongodb.net/?retryWrites=true&w=majority';
 if (!MONGO_URI) {
   throw new Error('You must provide a Mongo Atlas URI');
 }
